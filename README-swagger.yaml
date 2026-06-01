@@ -16,7 +16,7 @@ paths:
 
   # AUTH
   
-  /auth/register:
+  /users:
     post:
       security: []
       summary: Register user
