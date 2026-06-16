@@ -7,6 +7,7 @@ import auth
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 from datetime import datetime
+from gui import router as gui_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -23,6 +24,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(gui_router)
 
 @app.post("/api/users", status_code=status.HTTP_201_CREATED)
 def register(user: schemas.UserRegister, db: sqlite3.Connection = Depends(get_db)):

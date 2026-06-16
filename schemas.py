@@ -58,6 +58,13 @@ class Training(BaseModel):
     status: TrainingStatus
     created_at: Optional[datetime] = None
 
+ class TrainingPage(BaseModel):
+    items: List[Training]
+    total: int
+    page: int
+    size: int
+    pages: int
+
 class TrainingCreate(BaseModel):
     horse_id: int
     trainer_id: int

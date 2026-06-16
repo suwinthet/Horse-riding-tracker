@@ -123,6 +123,45 @@ paths:
         '400':
           description: Validation error
 
+  /trainings/page:
+    get:
+      summary: Get paginated and filtered trainings
+      parameters:
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+        - name: size
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 20
+            default: 5
+        - name: status
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [open, full, completed, cancelled]
+        - name: horse_id
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+      responses:
+        '200':
+          description: Paginated trainings matching the filters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrainingPage'
+
   /trainings/{id}:
     put:
       summary: Update training details
@@ -326,6 +365,22 @@ components:
         created_at:
           type: string
           format: date-time
+
+    TrainingPage:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Training'
+        total:
+          type: integer
+        page:
+          type: integer
+        size:
+          type: integer
+        pages:
+          type: integer
 
     TrainingCreate:
       type: object

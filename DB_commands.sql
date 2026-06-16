@@ -85,3 +85,25 @@ CREATE TABLE training_participants (
 );
 
 
+
+
+INSERT INTO horses (name, discipline, daily_limit) VALUES
+    ('Spirit', 'Jumping', 2),
+    ('Bella', 'Dressage', 2),
+    ('Comet', 'Recreational', 3);
+
+
+
+INSERT INTO trainers (name, surname, specialization) VALUES
+    ('John', 'Doe', 'Jumping'),
+    ('Anna', 'Smith', 'Dressage'),
+    ('Marta', 'Nowak', 'Recreational');
+
+
+
+INSERT INTO training_types (discipline, training_mode) VALUES
+    ('Jumping', 'individual'),
+    ('Jumping', 'group'),
+    ('Dressage', 'individual'),
+    ('Recreational', 'group');
+
