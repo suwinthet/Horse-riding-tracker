@@ -58,7 +58,7 @@ class Training(BaseModel):
     status: TrainingStatus
     created_at: Optional[datetime] = None
 
- class TrainingPage(BaseModel):
+class TrainingPage(BaseModel):
     items: List[Training]
     total: int
     page: int
